@@ -1,5 +1,6 @@
 import streamlit as st
-
+from gtts import gTTS
+import os
 from collections import Counter 
 from string import punctuation
 from sklearn.feature_extraction.stop_words import ENGLISH_STOP_WORDS as stop_words
@@ -120,6 +121,12 @@ def main():
     sent_scores = score_sentences(sents, freq_dist)
     summary, summary_sent_scores = summarize(sent_scores, 3)
     st.write(summary)
+    language="en"
+    output=gTTS(text=summary,lang=language,slow=False)
+    output.save("voice.ogg")
+    audio_file = open('voice.ogg', 'rb')
+    audio_bytes = audio_file.read()
+    st.audio(audio_bytes, format='audio/ogg')
     
 if st.button('summarize'):
     main()
