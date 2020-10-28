@@ -129,5 +129,5 @@ def main():
     audio_bytes = audio_file.read()
     st.audio(audio_bytes, format='audio/ogg')
     
-if st.button('summarize'):
+if st.button('SUMMARIZEE'):
     main()
