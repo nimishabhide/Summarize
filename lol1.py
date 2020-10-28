@@ -121,8 +121,9 @@ def main():
     sent_scores = score_sentences(sents, freq_dist)
     summary, summary_sent_scores = summarize(sent_scores, 3)
     st.write(summary)
+    mytext=summary
     language="en"
-    output=gTTS(text=summary,lang=language,slow=False)
+    output=gTTS(text=mytext,lang=language,slow=False)
     output.save("voice.ogg")
     audio_file = open('voice.ogg', 'rb')
     audio_bytes = audio_file.read()
